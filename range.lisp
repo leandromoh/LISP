@@ -1,10 +1,10 @@
-(defun range (a step limit)
-    (rangeaux a step limit (if (>= step 0) #'> #'< )))
+(defun range (start step limit)
+    (rangeaux start step limit (if (>= step 0) #'> #'< )))
 
-(defun rangeaux (a step limit f)
-    (if (funcall f a limit)
+(defun rangeaux (start step limit f)
+    (if (funcall f start limit)
         nil 
-        (cons a (rangeaux (+ a step) step limit f))))
+        (cons start (rangeaux (+ start step) step limit f))))
 
 
 (print (append (range 0 1 10) 
